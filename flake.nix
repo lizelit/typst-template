@@ -13,7 +13,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         
         # ドキュメント名を設定
-        documentName = "document";
+        documentName = "main";
         
         # Typstでドキュメントをビルド
         typstDocument = pkgs.stdenv.mkDerivation {

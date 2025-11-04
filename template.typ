@@ -18,6 +18,7 @@
     numbering: "1",
     number-align: center,
   )
+  set cite(style: "ieee")
   set par(justify: true)
   // 行間の調整
   set par(
