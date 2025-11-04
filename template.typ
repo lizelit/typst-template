@@ -19,7 +19,6 @@
     numbering: "1",
     number-align: center,
   )
-  set cite(style: "sist02")
   set par(justify: true)
   // gap
   set par(
@@ -87,7 +86,7 @@
   // title
   {
     set align(center)
-    text(1.5*fontsize, font: kakugothic, strong(title))
+    text(2.5*fontsize, font: kakugothic, strong(title))
     par(for a in authors {a})
     par(date)
     if abstract != [] {
