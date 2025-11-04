@@ -6,21 +6,22 @@
   date: none,
   doc,
 ) = {
+  // fonts
   let roman = "Libertinus Serif"
   let mincho = "YuMincho"
   let kakugothic = "YuGothic"
   let math_font = "New Computer Modern Math"
   set text(lang:"ja", font: (roman,mincho), size: fontsize)
-  // Use A4 paper
+  // paper size
   set page(
     paper: "a4",
     margin: auto,
     numbering: "1",
     number-align: center,
   )
-  set cite(style: "ieee")
+  set cite(style: "sist02")
   set par(justify: true)
-  // 行間の調整
+  // gap
   set par(
     leading: 0.8em,
     justify: true,
@@ -29,17 +30,17 @@
   set par(spacing: 0.8em)
   show heading: set block(above: 1.6em, below: 0.6em)
   set heading(numbering: "1.1     ")
-  // 様々な場所でのフォント
+  // fonts
   show heading: set text(font: kakugothic)
   show strong: set text(font: kakugothic)
   show emph: set text(font: (roman, kakugothic))
   show math.equation: set text(font: (math_font,roman,mincho)) 
-  // 見出しの下の段落を字下げするため
+  // indent
   show heading: it => {
     it
     par(text(size: 0pt, ""))
   }
-  // 数式番号
+  // eqation numbering
   set math.equation(numbering: "(1)")
   show ref: it => {
     let eq = math.equation
@@ -54,11 +55,10 @@
         )
       )
     } else {
-      // Other references as usual.
       it
     }
   }
-  // 目次
+  // table of content
   show outline.entry.where(
     level: 1
   ): it => {
@@ -67,7 +67,7 @@
   }
   set outline(indent: auto)
   
-  // 図と表のキャプション設定（共通）
+  // caption of figure and table
   show figure.where(kind:image): set figure(gap: 1.6em)
   show figure.where(kind:image): set block(above: 3em, below: 2em)
   show figure.where(kind:table): set figure(gap: 0em)
@@ -84,7 +84,7 @@
   show figure.caption: set align(center)
 
   
-  // タイトル
+  // title
   {
     set align(center)
     text(1.5*fontsize, font: kakugothic, strong(title))
@@ -100,7 +100,7 @@
   doc
 }
 
-// 図用の関数
+// function: figure
 #let fig(
   content,
   caption: none,
@@ -117,7 +117,7 @@
   label
 }
 
-// 表用の関数
+// function:table
 #let tbl(
   content,
   caption: none,

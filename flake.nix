@@ -11,11 +11,9 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        
-        # ドキュメント名を設定
+
         documentName = "main";
         
-        # Typstでドキュメントをビルド
         typstDocument = pkgs.stdenv.mkDerivation {
           name = "${documentName}";
           src = ./.;
@@ -33,17 +31,15 @@
         };
       in
       {
-        # パッケージ定義
         packages = {
           default = typstDocument;
           document = typstDocument;
         };
 
-        # 開発環境
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             typst
-            tinymist       # LSPサーバー（エディタサポート用）
+            tinymist       
           ];
 
           shellHook = ''
@@ -51,12 +47,11 @@
             echo "typst version: $(typst --version)"
             echo ""
             echo "Usage:"
-            echo "  typst compile ${documentName}.typ         # PDFをコンパイル"
-            echo "  typst watch ${documentName}.typ           # 変更を監視して自動コンパイル"
+            echo "  typst compile ${documentName}.typ         # compile"
+            echo "  typst watch ${documentName}.typ           # watch"
           '';
         };
 
-        # アプリケーション定義（nix run用）
         apps = {
           default = {
             type = "app";
