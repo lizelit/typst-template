@@ -7,10 +7,10 @@
   doc,
 ) = {
   // fonts
-  let roman = "Libertinus Serif"
-  let mincho = "YuMincho"
-  let kakugothic = "YuGothic"
+  let roman = "New Computer Modern"
   let math_font = "New Computer Modern Math"
+  let mincho = "Hiragino Mincho ProN"
+  let kakugothic = "Hiragino Sans"
   set text(lang:"ja", font: (roman,mincho), size: fontsize)
   // paper size
   set page(
@@ -30,7 +30,7 @@
   show heading: set block(above: 1.6em, below: 0.6em)
   set heading(numbering: "1.1     ")
   // fonts
-  show heading: set text(font: kakugothic)
+  show heading: set text(font: kakugothic, weight: "medium")
   show strong: set text(font: kakugothic)
   show emph: set text(font: (roman, kakugothic))
   show math.equation: set text(font: (math_font,roman,mincho))
@@ -86,7 +86,7 @@
   // title
   {
     set align(center)
-    text(2.5*fontsize, font: kakugothic, strong(title))
+    text(2.5*fontsize, font: kakugothic, title)
     par(for a in authors {a})
     par(date)
     if abstract != [] {

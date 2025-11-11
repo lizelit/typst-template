@@ -3,7 +3,7 @@
   fontsize:10pt,
   title: [タイトル],
   authors: ([著者名],),
-  date: "yyyy/MM/dd",
+  date: datetime.today().display(ymd),
 )
 
 = 目的
@@ -21,6 +21,10 @@ typstのテンプレートです．
   ),
   caption: [表のサンプル],
 ) <tbl:sample-table>
+
+$
+  E = m c^2
+$ <eq:something-nice-equation>
 = 方法
 #fig(
   image("figures/sample.png", width: 80pt),
@@ -29,6 +33,7 @@ typstのテンプレートです．
 = 結果
 @tbl:sample-table から〜〜〜〜 \
 @fig:sample-figure から〜〜〜〜 \
+式@eq:something-nice-equation から〜〜〜〜\
 のように参照することができます．
 = 考察
 このように引用 @pierce2002tapl します．
