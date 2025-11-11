@@ -33,7 +33,7 @@
   show heading: set text(font: kakugothic)
   show strong: set text(font: kakugothic)
   show emph: set text(font: (roman, kakugothic))
-  show math.equation: set text(font: (math_font,roman,mincho)) 
+  show math.equation: set text(font: (math_font,roman,mincho))
   // indent
   show heading: it => {
     it
@@ -65,7 +65,7 @@
     it
   }
   set outline(indent: auto)
-  
+
   // caption of figure and table
   show figure.where(kind:image): set figure(gap: 1.6em)
   show figure.where(kind:image): set block(above: 3em, below: 2em)
@@ -77,12 +77,12 @@
     #v(1em)
   ]
   show figure.caption: set text(
-    font: kakugothic, 
+    font: kakugothic,
     size: 0.9 * fontsize
   )
   show figure.caption: set align(center)
 
-  
+
   // title
   {
     set align(center)
@@ -91,7 +91,7 @@
     par(date)
     if abstract != [] {
       block(width: 90%, text(0.9*fontsize, [
-        *概要* \ 
+        *概要* \
         #align(left, abstract)
       ]))
     }
@@ -139,5 +139,5 @@
   #app
 ]
 
-#let 年月日 = "[year]年[month repr:numerical padding:none]月[day padding:none]日"
-#let 年月 = "[year]年[month repr:numerical padding:none]月"
+#let ymd = "[year]年[month repr:numerical padding:none]月[day padding:none]日"
+#let ym = "[year]年[month repr:numerical padding:none]月"

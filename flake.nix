@@ -13,17 +13,17 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         documentName = "main";
-        
+
         typstDocument = pkgs.stdenv.mkDerivation {
           name = "${documentName}";
           src = ./.;
-          
+
           buildInputs = [ pkgs.typst ];
-          
+
           buildPhase = ''
             typst compile ${documentName}.typ
           '';
-          
+
           installPhase = ''
             mkdir -p $out
             cp ${documentName}.pdf $out/
@@ -39,7 +39,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             typst
-            tinymist       
+            tinymist
           ];
 
           shellHook = ''
@@ -49,6 +49,7 @@
             echo "Usage:"
             echo "  typst compile ${documentName}.typ         # compile"
             echo "  typst watch ${documentName}.typ           # watch"
+            unset SOURCE_DATE_EPOCH
           '';
         };
 
@@ -60,7 +61,7 @@
               echo "Document compiled to ${documentName}.pdf"
             ''}";
           };
-          
+
           watch = {
             type = "app";
             program = "${pkgs.writeShellScript "watch-typst" ''
